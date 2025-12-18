@@ -7,9 +7,9 @@ This app analyzes YouTube trending data with a focus on Korea, predicting perfor
 
 ### Features
 1.  **Data Handling**:
-    -   Tries to load `daily_trending_videos.csv`.
-    -   **Fallback**: If the CSV is missing, it generates realistic **mock data** for Korea (2023-2025) so you can test the app immediately.
-    -   **Filtering**: If the dataset has a 'country' column, it filters for 'KR'.
+    -   Loads data from **[daily_trending_videos.xlsb.csv](file:///c:/SocialMediaAnalysis/daily_trending_videos.xlsb.csv)**.
+    -   **Fallback**: If the CSV is missing, it generates realistic **mock data** for Korea.
+    -   **Filtering**: Filters for 'KR' region.
 2.  **Analysis**:
     -   Performs **Linear Regression** on Views, Likes, and Comments.
     -   Predicts trends for **Jan 2026 - Jun 2026**.
@@ -26,16 +26,10 @@ This app analyzes YouTube trending data with a focus on Korea, predicting perfor
     pip install -r requirements.txt
     ```
 
-2.  **Run the App**:
+2.  **Dataset**:
+    -   Ensure [daily_trending_videos.xlsb.csv](file:///c:/SocialMediaAnalysis/daily_trending_videos.xlsb.csv) is in the same folder as [app.py](file:///c:/SocialMediaAnalysis/app.py).
+
+3.  **Run the App**:
     ```bash
     streamlit run app.py
     ```
-
-3.  **Dataset**:
-    -   For real analysis, place the `daily_trending_videos.csv` from Kaggle in the `c:\SocialMediaAnalysis` folder.
-    -   The app currently runs with **MOCK DATA** so you can verifying the UI logic immediately.
-
-## Deployment to Streamlit Cloud
-1.  Upload `app.py` and `requirements.txt` to a GitHub repository.
-2.  Connect your Streamlit Cloud account to the repo.
-3.  It will automatically detect the requirements and launch the app.
