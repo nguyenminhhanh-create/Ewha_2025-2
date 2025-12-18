@@ -20,7 +20,6 @@ DATA_FILE = "daily_trending_videos.xlsb.csv"
 @st.cache_data
 def load_data():
     """
-    Loads data from CSV or generates mock data if file not found.
     Filters for Korea region.
     """
     if os.path.exists(DATA_FILE):
@@ -54,20 +53,8 @@ def load_data():
             
             # Group by date to get daily totals
             daily_df = df.groupby('trending_date')[['view_count', 'likes', 'comment_count']].sum().reset_index()
-            daily_df['is_mock'] = False
-            return daily_df
-            
-        except Exception as e:
-            st.error(f"Error loading {DATA_FILE}: {e}. Using mock data.")
-            return generate_mock_data()
-    else:
-        # Generate mock data
-        return generate_mock_data()
+            return daily_d
 
-def generate_mock_data():
-    """Generates synthetic YouTube trending data for Korea (2023-2025)."""
-    dates = pd.date_range(MOCK_DATA_START_DATE, MOCK_DATA_END_DATE)
-    n = len(dates)
     
     # Trend with some seasonality and noise
     t = np.arange(n)
@@ -90,7 +77,6 @@ def generate_mock_data():
         'view_count': view_counts,
         'likes': likes,
         'comment_count': comments,
-        'is_mock': True
     })
     return df
 
@@ -150,11 +136,6 @@ st.write("Historical analysis of 2023-2025 and predictions for Jan-Jun 2026.")
 
 # Load Data
 df = load_data()
-
-if df['is_mock'].any():
-    st.warning("⚠️ `daily_trending_videos.csv` not found. Showing **MOCK** data for demonstration.")
-else:
-    st.success(f"Loaded {len(df)} days of trending data.")
 
 st.divider()
 
@@ -332,4 +313,5 @@ if prompt:
             
         except Exception as e:
             st.error(f"OpenAI API Error: {str(e)}")
+
 
