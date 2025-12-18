@@ -1,0 +1,47 @@
+# Streamlit YouTube Trends Korea App - Implementation Plan
+
+## Goal Description
+Create a single-file Streamlit application ([app.py](file:///c:/SocialMediaAnalysis/app.py)) that analyzes YouTube trending video data for the Korea region. The app will perform regression analysis to predict views, likes, and comments for the first 6 months of 2026. It will feature an OpenAI-powered chat interface to interpret these results, with streaming responses.
+
+## User Review Required
+- **Data Source**: The application strictly requires [daily_trending_videos.xlsb.csv](file:///c:/SocialMediaAnalysis/daily_trending_videos.xlsb.csv).
+- **OpenAI Key**: The API key will be required via the sidebar.
+
+## Proposed Changes
+
+### Dependencies
+- `streamlit`
+- `pandas`
+- `numpy`
+- `scikit-learn`
+- `plotly`
+- `openai`
+
+### Application Logic ([app.py](file:///c:/SocialMediaAnalysis/app.py))
+1.  **Imports & Configuration**: Setup Streamlit page config.
+2.  **Data Loading**:
+    *   Function [load_data()](file:///c:/SocialMediaAnalysis/app.py#21-66): Reads [daily_trending_videos.xlsb.csv](file:///c:/SocialMediaAnalysis/daily_trending_videos.xlsb.csv).
+    *   Filters for Korea region (`country == 'KR'`).
+    *   Maps columns: `views` -> `view_count`, `comments` -> `comment_count`, `fetch_date` -> `trending_date`.
+    *   Aggregates by date to get daily totals.
+    *   **Error Handling**: Stops execution and shows an error if the file is missing or `country` column is absent.
+3.  **Analysis (Regression)**:
+    *   Use `scikit-learn` `LinearRegression`.
+    *   Train on historical data.
+    *   Predict for Jan 2026 - Jun 2026.
+4.  **Visualization**:
+    *   Plotly line charts showing Historical data vs Predictions.
+5.  **Chat Interface**:
+    *   Sidebar: Input for OpenAI API Key.
+    *   Main Chat:
+        *   Maintain `st.session_state` for chat history.
+        *   Prompt includes statistical summary (R2 score, growth %).
+        *   Use `openai.ChatCompletion.create` with `stream=True`.
+
+## Verification Plan
+
+### Manual Verification
+- Run `streamlit run app.py`.
+- Ensure it successfully loads [daily_trending_videos.xlsb.csv](file:///c:/SocialMediaAnalysis/daily_trending_videos.xlsb.csv).
+- Verify regression plots extend to June 2026.
+- Test chat interface with valid/invalid keys.

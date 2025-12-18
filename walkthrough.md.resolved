@@ -1,0 +1,39 @@
+# Walkthrough: YouTube Trends Korea Predictor
+
+I have built the single-file Streamlit application [app.py](file:///c:/SocialMediaAnalysis/app.py).
+
+## Application Overview
+This app analyzes YouTube trending data with a focus on Korea, predicting performance for early 2026.
+
+### Features
+1.  **Data Handling**:
+    -   Loads data from **[daily_trending_videos.xlsb.csv](file:///c:/SocialMediaAnalysis/daily_trending_videos.xlsb.csv)**.
+    -   **Filtering**: Filters for 'KR' region.
+2.  **Analysis**:
+    -   Performs **Linear Regression** on Views, Likes, and Comments.
+    -   Predicts trends for **Jan 2026 - Jun 2026**.
+3.  **Visualization**:
+    -   Interactive Plotly charts showing Historical Data vs. Trend Line vs. 2026 Predictions.
+4.  **AI Chat**:
+    -   Sidebar input for **OpenAI API Key**.
+    -   Chat interface interpreting the specific regression numbers (R² score, predicted growth) using GPT-3.5 with **streaming responses**.
+
+## How to Run
+
+1.  **Install Dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2.  **Dataset**:
+    -   Ensure [daily_trending_videos.xlsb.csv](file:///c:/SocialMediaAnalysis/daily_trending_videos.xlsb.csv) is in the same folder as [app.py](file:///c:/SocialMediaAnalysis/app.py).
+
+3.  **Run the App**:
+    ```bash
+    streamlit run app.py
+    ```
+
+## Deployment to Streamlit Cloud
+1.  Upload [app.py](file:///c:/SocialMediaAnalysis/app.py) and [requirements.txt](file:///c:/SocialMediaAnalysis/requirements.txt) to a GitHub repository.
+2.  Also upload the [daily_trending_videos.xlsb.csv](file:///c:/SocialMediaAnalysis/daily_trending_videos.xlsb.csv) file (if size permits, otherwise use Git LFS or external storage, but for this simple app direct upload is assumed).
+3.  Connect your Streamlit Cloud account to the repo.
