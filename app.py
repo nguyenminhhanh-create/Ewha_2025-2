@@ -58,6 +58,7 @@ def load_data():
     
     # Trend with some seasonality and noise
     t = np.arange(n)
+    finally
     
     # Views: Growing trend + random noise
     base_views = 1_000_000 + (t * 2000) + (np.sin(t / 30) * 100_000)
@@ -312,6 +313,7 @@ if prompt:
             st.session_state.messages.append({"role": "assistant", "content": response})
             
     
+
 
 
 
