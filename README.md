@@ -47,7 +47,7 @@ Execute the Streamlit application:
 streamlit run app.py
 ```
 
-### 3. Open in Browser
+### 2. Open in Browser
 The app will open automatically in your default browser (usually at `http://localhost:8501`).
 
 ### 4. Configure AI
@@ -63,4 +63,5 @@ Enter your **OpenAI API Key** in the sidebar to enable the chat functionality.
 ## 📝 License
 
 This project is open source and available under the [MIT License](LICENSE).
+
 
