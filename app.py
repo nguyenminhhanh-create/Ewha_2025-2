@@ -12,8 +12,6 @@ import os
 st.set_page_config(layout="wide", page_title="YouTube Trends Korea 2026 Predictor")
 
 # --- Constants ---
-MOCK_DATA_START_DATE = datetime(2023, 1, 1)
-MOCK_DATA_END_DATE = datetime(2025, 12, 18)
 # The user's file is named daily_trending_videos.xlsb.csv
 DATA_FILE = "daily_trending_videos.xlsb.csv"
 
@@ -334,3 +332,4 @@ if prompt:
             
         except Exception as e:
             st.error(f"OpenAI API Error: {str(e)}")
+
