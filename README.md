@@ -39,15 +39,8 @@ The application expects a dataset named `daily_trending_videos.csv`.
 
 ## 🚀 Usage
 
-### 1. Prepare Data
-If you do not have the Kaggle dataset yet, you can generate a synthetic dataset for testing purposes:
 
-```bash
-python create_mock_data.py
-```
-*This will create a `daily_trending_videos.csv` file in your directory.*
-
-### 2. Run the App
+### 1. Run the App
 Execute the Streamlit application:
 
 ```bash
@@ -70,3 +63,4 @@ Enter your **OpenAI API Key** in the sidebar to enable the chat functionality.
 ## 📝 License
 
 This project is open source and available under the [MIT License](LICENSE).
+
